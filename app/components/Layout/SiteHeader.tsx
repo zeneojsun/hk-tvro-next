@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { copy, getLangFromSearchParams } from "@/app/lib/i18n";
+import { copy } from "@/app/lib/i18n";
+import type { Lang } from "@/app/lib/i18n";
 import LangSwitch from "./LangSwitch";
 
 const navEntries = [
@@ -24,8 +25,8 @@ export default function SiteHeader() {
   const [scrolled, setScrolled]         = useState(false);
   const [mobileOpen, setMobileOpen]     = useState(false);
   const [activeSection, setActiveSection] = useState<NavKey | null>(null);
-  const sp   = useSearchParams();
-  const lang = getLangFromSearchParams(sp);
+  const pathname = usePathname();
+  const lang: Lang = pathname.startsWith("/zh") ? "zh" : "en";
 
   useEffect(() => {
     function onScroll() {

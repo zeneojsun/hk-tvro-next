@@ -1,15 +1,15 @@
 "use client";
 
 import { useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 export default function HtmlLangSync() {
-  const sp = useSearchParams();
+  const pathname = usePathname();
 
   useEffect(() => {
-    const lang = sp.get("lang") === "zh" ? "zh" : "en";
+    const lang = pathname.startsWith("/zh") ? "zh" : "en";
     document.documentElement.lang = lang;
-  }, [sp]);
+  }, [pathname]);
 
   return null;
 }

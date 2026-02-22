@@ -1,18 +1,15 @@
 "use client";
 
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function LangSwitch() {
   const router = useRouter();
   const pathname = usePathname();
-  const sp = useSearchParams();
-  const lang = sp.get("lang") === "zh" ? "zh" : "en";
+  const lang = pathname.startsWith("/zh") ? "zh" : "en";
 
   function setLang(next: "en" | "zh") {
-    const params = new URLSearchParams(sp.toString());
-    params.set("lang", next);
     const hash = window.location.hash;
-    router.replace(`${pathname}?${params.toString()}${hash}`);
+    router.replace(`/${next}${hash}`);
   }
 
   return (

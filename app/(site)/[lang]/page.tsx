@@ -14,13 +14,13 @@ import type { Lang } from "@/app/lib/i18n";
 import { getSiteSettings } from "@/sanity/lib/client";
 
 type PageProps = {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
+  params: Promise<{ lang: string }>;
 };
 
-export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
-  const sp     = await searchParams;
-  const lang: Lang = sp["lang"] === "zh" ? "zh" : "en";
-  const settings   = await getSiteSettings();
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { lang: rawLang } = await params;
+  const lang: Lang = rawLang === "zh" ? "zh" : "en";
+  const settings = await getSiteSettings();
 
   const company = settings?.companyName || "HKTVRO";
   const zh = lang === "zh";
@@ -48,18 +48,18 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
       description,
     },
     alternates: {
-      canonical: "/",
+      canonical: `/${lang}`,
       languages: {
-        en: "/?lang=en",
-        zh: "/?lang=zh",
+        en: "/en",
+        zh: "/zh",
       },
     },
   };
 }
 
-export default async function Home({ searchParams }: PageProps) {
-  const sp = await searchParams;
-  const lang: Lang = sp["lang"] === "zh" ? "zh" : "en";
+export default async function Home({ params }: PageProps) {
+  const { lang: rawLang } = await params;
+  const lang: Lang = rawLang === "zh" ? "zh" : "en";
 
   return (
     <Suspense fallback={null}>
