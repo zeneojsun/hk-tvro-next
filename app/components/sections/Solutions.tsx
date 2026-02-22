@@ -3,6 +3,8 @@ import SectionHeading from "../ui/SectionHeading";
 import { copy, type Lang } from "@/app/lib/i18n";
 import { getSolutionsSection } from "@/sanity/lib/client";
 
+type Item = { key: string; title: string; body: string };
+
 export default async function Solutions({ lang }: { lang: Lang }) {
   const cms = await getSolutionsSection();
   const t = copy.solutions;
@@ -10,8 +12,8 @@ export default async function Solutions({ lang }: { lang: Lang }) {
 
   const title = (zh ? cms?.title_zh || cms?.title_en : cms?.title_en || cms?.title_zh) || t.title[lang];
 
-  const items = cms?.items?.length
-    ? cms.items.map((item: any) => ({
+  const items: Item[] = cms?.items?.length
+    ? cms.items.map((item: Record<string, string>) => ({
         key:   item.title_en ?? item.title_zh ?? "",
         title: (zh ? item.title_zh || item.title_en : item.title_en || item.title_zh) ?? "",
         body:  (zh ? item.body_zh  || item.body_en  : item.body_en  || item.body_zh)  ?? "",

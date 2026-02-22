@@ -4,6 +4,8 @@ import SectionHeading from "../ui/SectionHeading";
 import { copy, type Lang } from "@/app/lib/i18n";
 import { getProjectsSection } from "@/sanity/lib/client";
 
+type ProjectItem = { key: string; title: string; scope: string; outcome: string };
+
 export default async function Projects({ lang }: { lang: Lang }) {
   const cms = await getProjectsSection();
   const t = copy.projects;
@@ -11,8 +13,8 @@ export default async function Projects({ lang }: { lang: Lang }) {
 
   const title = (zh ? cms?.title_zh || cms?.title_en : cms?.title_en || cms?.title_zh) || t.title[lang];
 
-  const items = cms?.items?.length
-    ? cms.items.map((item: any) => ({
+  const items: ProjectItem[] = cms?.items?.length
+    ? cms.items.map((item: Record<string, string>) => ({
         key:     item.title_en ?? item.title_zh ?? "",
         title:   (zh ? item.title_zh   || item.title_en   : item.title_en   || item.title_zh)   ?? "",
         scope:   (zh ? item.scope_zh   || item.scope_en   : item.scope_en   || item.scope_zh)   ?? "",

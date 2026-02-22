@@ -3,6 +3,8 @@ import SectionHeading from "../ui/SectionHeading";
 import { copy, type Lang } from "@/app/lib/i18n";
 import { getProcessSection } from "@/sanity/lib/client";
 
+type Step = { key: string; n: string; title: string; body: string };
+
 export default async function Process({ lang }: { lang: Lang }) {
   const cms = await getProcessSection();
   const t = copy.process;
@@ -10,8 +12,8 @@ export default async function Process({ lang }: { lang: Lang }) {
 
   const title = (zh ? cms?.title_zh || cms?.title_en : cms?.title_en || cms?.title_zh) || t.title[lang];
 
-  const steps = cms?.steps?.length
-    ? cms.steps.map((step: any) => ({
+  const steps: Step[] = cms?.steps?.length
+    ? cms.steps.map((step: Record<string, string>) => ({
         key:   step.stepNumber ?? step.title_en ?? "",
         n:     step.stepNumber ?? "",
         title: (zh ? step.title_zh || step.title_en : step.title_en || step.title_zh) ?? "",
