@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { copy, type Lang } from "@/app/lib/i18n";
 import { getSiteSettings } from "@/sanity/lib/client";
+import Container from "@/app/components/Layout/Container";
 
 export default async function Hero({ lang }: { lang: Lang }) {
   const settings = await getSiteSettings();
@@ -22,8 +23,8 @@ export default async function Hero({ lang }: { lang: Lang }) {
     t.subtitle[lang];
 
   return (
-    <>
-      <section className="-mx-6 lg:-mx-8 px-6 lg:px-8 py-20 md:py-32 bg-gradient-to-br from-blue-50 via-white to-slate-100">
+    <section id="hero" className="bg-gradient-to-br from-blue-50 via-white to-slate-100 py-20 md:py-32">
+      <Container>
         <div className="space-y-6 max-w-3xl">
           <p className="text-sm md:text-base font-semibold tracking-[0.2em] text-muted-foreground uppercase">
             {finalEyebrow}
@@ -47,31 +48,31 @@ export default async function Hero({ lang }: { lang: Lang }) {
             </Button>
           </div>
         </div>
-      </section>
 
-      <section className="pt-2">
-        <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
-          {t.trustLabel[lang]}
-        </p>
+        <div className="pt-2">
+          <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
+            {t.trustLabel[lang]}
+          </p>
 
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground/50 font-medium">
-          {t.trustItems.map((item, i) => (
-            <span key={item.en} className="flex items-center gap-6">
-              {item[lang]}
-              {i < t.trustItems.length - 1 && (
-                <span
-                  aria-hidden="true"
-                  className="text-muted-foreground/30"
-                >
-                  ·
-                </span>
-              )}
-            </span>
-          ))}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground/50 font-medium">
+            {t.trustItems.map((item, i) => (
+              <span key={item.en} className="flex items-center gap-6">
+                {item[lang]}
+                {i < t.trustItems.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    className="text-muted-foreground/30"
+                  >
+                    ·
+                  </span>
+                )}
+              </span>
+            ))}
+          </div>
         </div>
-      </section>
 
-      <Separator />
-    </>
+        <Separator className="mt-8" />
+      </Container>
+    </section>
   );
 }

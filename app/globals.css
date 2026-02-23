@@ -64,7 +64,7 @@
   --radius: 0.75rem;
 
   /* Base */
-  --background: oklch(0.985 0.005 255);           /* very light blue-gray */
+  --background: #ffffff; /* page background: pure white to match outside area */
   --foreground: oklch(0.145 0.01 255);            /* slate-ish */
 
   /* Surfaces */

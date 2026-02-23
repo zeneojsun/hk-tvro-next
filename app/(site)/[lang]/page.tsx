@@ -63,12 +63,10 @@ export default async function Home({ params }: PageProps) {
 
   return (
     <Suspense fallback={null}>
-      <main className="min-h-screen bg-white text-black">
-        <Section id="hero">
-          <FadeIn threshold={0} delay={100}>
-            <Hero lang={lang} />
-          </FadeIn>
-        </Section>
+      <main className="min-h-screen text-black">
+        <FadeIn threshold={0} delay={100}>
+          <Hero lang={lang} />
+        </FadeIn>
 
         <Section id="solutions" divider>
           <FadeIn>

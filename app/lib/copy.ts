@@ -112,5 +112,5 @@ export const copy = {
 
 export function getLang(sp: URLSearchParams | null): Lang {
   const v = sp?.get("lang");
-  return v === "zh" ? "zh" : "en";
+  return v === "en" ? "en" : "zh";
 }
