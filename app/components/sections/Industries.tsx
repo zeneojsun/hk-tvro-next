@@ -36,8 +36,8 @@ export default async function Industries({ lang }: { lang: Lang }) {
           const Icon = ICONS[i % ICONS.length];
           return (
             <Card key={item.key}>
-              <CardHeader>
-                <Icon className="w-5 h-5 text-slate-400 mb-1" strokeWidth={1.5} />
+              <CardHeader className="items-center text-center">
+                <Icon className="w-6 h-6 text-slate-800 mb-1" strokeWidth={1.5} />
                 <CardTitle className="text-xl">{item.title}</CardTitle>
                 <CardDescription className="text-base leading-relaxed">{item.body}</CardDescription>
               </CardHeader>
