@@ -22,13 +22,15 @@ export const copy = {
   },
 
   hero: {
-    eyebrow:    { en: "Integrated Security & Technical Solutions", zh: "综合安防与技术解决方案" },
+    eyebrow:    { en: "Integrated Security & Technical Solutions", zh: "綜合安防與技術解決方案" },
+    line1:      { en: "Safer. More Reliable.",               zh: "更安全、更可靠" },
+    line2:      { en: "Smart Security & System Integration", zh: "智能保安與系統整合" },
     subtitle:   {
       en: "Reliable system integration for surveillance, access control and communication infrastructure across Hong Kong.",
-      zh: "为香港企业及屋苑提供可靠的监控、门禁及通讯基础设施系统集成服务。",
+      zh: "20+ 年本地系統整合經驗，為香港企業及屋苑提供穩定、合規、可擴展的監控、門禁及通訊基礎設施解決方案。",
     },
     cta1:       { en: "View Solutions", zh: "查看方案" },
-    cta2:       { en: "Contact Us",     zh: "联系我们" },
+    cta2:       { en: "Contact Us",     zh: "聯絡我們" },
     trustLabel: { en: "Trusted by organisations across Hong Kong", zh: "受香港各界机构信赖" },
     trustItems: [
       { en: "Property Management",  zh: "物业管理" },
@@ -61,19 +63,23 @@ export const copy = {
   },
 
   industries: {
-    title: { en: "Industries We Serve", zh: "服务行业" },
+    title: { en: "Industries We Serve", zh: "服務領域" },
     items: [
       {
         title: { en: "Property Management",  zh: "物业管理" },
         body:  { en: "Integrated security and monitoring systems for estates and managed buildings.", zh: "为屋苑及受管物业提供综合安防及监控系统。" },
       },
       {
-        title: { en: "Office Buildings",     zh: "商业办公楼" },
+        title: { en: "Commercial Offices",   zh: "商业办公" },
         body:  { en: "Access control, CCTV and network surveillance for corporate environments.", zh: "为企业环境提供门禁控制、闭路电视及网络监控。" },
       },
       {
         title: { en: "Residential Estates",  zh: "住宅屋苑" },
         body:  { en: "Biometric access and integrated monitoring systems for modern housing communities.", zh: "为现代住宅社区提供生物识别门禁及综合监控系统。" },
+      },
+      {
+        title: { en: "Retail Complexes",     zh: "零售商场" },
+        body:  { en: "Surveillance and monitoring systems for retail and commercial environments.", zh: "为零售及商业综合体提供监控及安全管理系统。" },
       },
     ],
   },

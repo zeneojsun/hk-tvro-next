@@ -74,7 +74,7 @@ export default async function Home({ params }: PageProps) {
           </FadeIn>
         </Section>
 
-        <Section id="industries" variant="alt" divider>
+        <Section id="industries" variant="alt" divider className="border-t border-slate-200">
           <FadeIn>
             <Industries lang={lang} />
           </FadeIn>

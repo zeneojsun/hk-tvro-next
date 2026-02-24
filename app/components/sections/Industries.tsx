@@ -1,6 +1,5 @@
 import { Building2, Home, Briefcase, Landmark } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import SectionHeading from "../ui/SectionHeading";
 import { copy, type Lang } from "@/app/lib/i18n";
 import { getIndustriesSection } from "@/sanity/lib/client";
@@ -31,17 +30,18 @@ export default async function Industries({ lang }: { lang: Lang }) {
   return (
     <>
       <SectionHeading title={title} />
-      <div className="grid grid-cols-2 gap-8 md:gap-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12">
         {items.map((item, i) => {
           const Icon = ICONS[i % ICONS.length];
           return (
-            <Card key={item.key}>
-              <CardHeader className="items-center text-center">
-                <Icon className="w-6 h-6 text-slate-800 mb-1" strokeWidth={1.5} />
-                <CardTitle className="text-xl">{item.title}</CardTitle>
-                <CardDescription className="text-base leading-relaxed">{item.body}</CardDescription>
-              </CardHeader>
-            </Card>
+            <div
+              key={item.key}
+              className="flex flex-col items-center text-center rounded-lg border border-slate-200 p-6 transition-colors duration-150 hover:bg-slate-50/60"
+            >
+              <Icon className="w-5 h-5 text-slate-600 mb-3" strokeWidth={1.5} />
+              <p className="font-semibold text-slate-800 mb-1.5">{item.title}</p>
+              <p className="text-sm text-slate-500 leading-relaxed">{item.body}</p>
+            </div>
           );
         })}
       </div>
